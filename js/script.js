@@ -85,11 +85,11 @@ function game(){
         {
             if(pScore === 3)
             {
-                console.log("Player wins!")
+                console.log("Player wins!");
             }
             if(cScore === 3)
             {
-                console.log("Computer wins! Try again maybe?")
+                console.log("Computer wins! Try again maybe?");
             }
             break;
         }
