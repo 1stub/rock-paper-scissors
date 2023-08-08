@@ -5,12 +5,14 @@ const min = 1;
 const playerRock = document.querySelector("#rock");
 const playerPapers = document.querySelector("#paper");
 const playerScissors = document.querySelector("#scissors")
+let tie = false;
+let pScore = 0;
+let cScore = 0;
 let computerChoice;
 let playerChoice;
 
 function getComputerChoice(){
     let ranNum = Math.floor(Math.random() * (max - min + 1)) + min; //Generates random number between 1 and 3
-    console.log(ranNum);
     if(ranNum === 1){
         return computerChoice = "Rock";
     }
@@ -28,34 +30,43 @@ function playRound(pChoice, cChoice){
     if(pChoice === "rock"){
         if(cChoice === "scissors"){
             console.log("Player wins! Rock beats scissors");
+            pScore +=1;
         }
         else if(cChoice === "paper"){
             console.log("Computer wins! Paper beats rock");
+            cScore += 1;
         }
         else{
             console.log("Its a tie!");
+            tie = true;
         }
     }
     else if(pChoice === "paper"){
         if(cChoice === "rock"){
             console.log("Player wins! paper beats rock");
+            pScore +=1;
         }
         else if(cChoice === "scissors"){
             console.log("Computer wins! Scissors beat paper");
+            cScore+=1;
         }
         else{
             console.log("Its a tie!");
+            tie = true;
         }
     }
     else if(pChoice === "scissors"){
         if(cChoice === "paper"){
             console.log("Player wins! Scissors beat paper");
+            pScore+=1;
         }
         else if (cChoice === "rock"){
             console.log("Computer wins! Rock beats scissors");
+            cScore+=1;
         }
         else{
             console.log("Its a tie!");
+            tie = true;
         }
     }
     else;
@@ -63,9 +74,25 @@ function playRound(pChoice, cChoice){
 
 function game(){
     for(let i = 1; i <=5; i++){
-
-        playRound("rock","rock")
+        let userChoice = prompt("Please enter your choice: ")
+        playRound(userChoice,getComputerChoice())
+        if(tie === true){
+            i--;
+            tie = false;
+        }
+        console.log(`Player Score: ${pScore}, Computer Score: ${cScore}`);
+        if(pScore === 3 || cScore === 3)
+        {
+            if(pScore === 3)
+            {
+                console.log("Player wins!")
+            }
+            if(cScore === 3)
+            {
+                console.log("Computer wins! Try again maybe?")
+            }
+            break;
+        }
     }
 }
-
 game();
