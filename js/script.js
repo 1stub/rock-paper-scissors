@@ -5,11 +5,34 @@ const min = 1;
 const playerRock = document.querySelector("#rock");
 const playerPapers = document.querySelector("#paper");
 const playerScissors = document.querySelector("#scissors")
+const score = document.querySelector("#score");
 let tie = false;
 let pScore = 0;
 let cScore = 0;
 let computerChoice;
 let playerChoice;
+
+playerRock.addEventListener('click', () => {
+    playerChoice = "rock";
+    gameEvent();
+});
+
+playerPapers.addEventListener('click', () => {
+    playerChoice = "paper";
+    gameEvent();
+});
+
+playerScissors.addEventListener('click', () => {
+    playerChoice = "scissors";
+    gameEvent();
+});
+
+function gameEvent(){
+    getComputerChoice();
+    playRound(playerChoice, computerChoice);
+    game();
+    score.textContent = `${pScore} - ${cScore}`;
+}
 
 function getComputerChoice(){
     let ranNum = Math.floor(Math.random() * (max - min + 1)) + min; //Generates random number between 1 and 3
@@ -74,8 +97,6 @@ function playRound(pChoice, cChoice){
 
 function game(){
     for(let i = 1; i <=5; i++){
-        let userChoice = prompt("Please enter your choice: ")
-        playRound(userChoice,getComputerChoice())
         if(tie === true){
             i--;
             tie = false;
