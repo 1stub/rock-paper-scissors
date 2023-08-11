@@ -1,7 +1,69 @@
 html{
     background-color: grey;
 }
+body{
+    display: flex;
+    flex-direction: column;
+    font-family: "Arial";
+    justify-content: center;
+    align-items: center;
+}
+html, body{
+    margin: 0;
+    height: 100%; /*body fills whole page*/
+}
+h1{
+    justify-self: center;
+    align-self: center;
+}
+.score-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    font-weight: bold;
+    font-size: 24px;
+}
+#winloss{
+    font-weight: bolder;
+    font-size: 18px;
+    margin-bottom: 36px;
+}
+.buttons{
+    display:flex;
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+}
+.buttons button img{
+    width: 75%;
+    margin: 0;
+    padding: 0;
+}
+.buttons button{
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 15%;
+    margin: 0;
+    padding: 0;
+    border-style: solid;
+}
+.buttons button:hover{
+    border-color:rgb(187, 159, 0);
+    transform:scale(1.2);
+    border-width: 4px;
+}
 .player-computer{
     display:flex;
     gap: 12px;
+}
+.footer{
+    display:flex;
+    text-align:center;
+    justify-content: space-between;
+    margin-top:auto;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(185, 185, 185);
+    padding: 18px;
 }

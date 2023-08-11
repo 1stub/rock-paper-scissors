@@ -5,7 +5,6 @@ const min = 1;
 const playerRock = document.querySelector("#rock");
 const playerPapers = document.querySelector("#paper");
 const playerScissors = document.querySelector("#scissors")
-const score = document.querySelector("#score");
 const winLossMsg = document.querySelector("#winloss")
 let tie = false;
 let pScore = 0;
@@ -28,11 +27,14 @@ playerScissors.addEventListener('click', () => {
     gameEvent();
 });
 
+const playerScore = document.querySelector("#player-score");
+const computerScore = document.querySelector("#computer-score");
 function gameEvent(){
     getComputerChoice();
     playRound(playerChoice, computerChoice);
     game();
-    score.textContent = `${pScore} - ${cScore}`;
+    playerScore.textContent = `Player: ${pScore}`;
+    computerScore.textContent = `Computer: ${cScore}`;
 }
 
 function getComputerChoice(){
@@ -94,6 +96,16 @@ function playRound(pChoice, cChoice){
         }
     }
     else;
+    if(pScore === 5 ){
+        pScore = 0;
+        cScore = 0;
+        winLossMsg.textContent="The player got to 5 wins first! Congratulations!"
+    }
+    if(cScore === 5){
+        pScore = 0;
+        cScore = 0;
+        winLossMsg.textContent="The computer got to 5 wins first! Maybe try again?"
+    }
 }
 
 function game(){
